@@ -2,8 +2,8 @@ insert into performer(performer_name)
 values 
 ('Eminem'),
 ('L. Gaga'),
-('Kirkorov'),
-('Gudkov');
+('Gudkov'),
+('Kirkorov');
 
 insert into album (album_name, year_created) 
 values
@@ -19,9 +19,7 @@ values
 ('AAA', 2010),
 ('bbb', 2020),
 ('CcC', 2000),
-('AbcD', 2025),
-('DDD', 2014),
-('ggg', 2022);
+('AbcD', 2025);
 
 insert into musicalgenre(genre_name)
 values
@@ -39,3 +37,27 @@ values
 ('My darling', 250),
 ('Abracadabra', 290);
 
+insert into performergenre (genre_id, performer_id)
+values
+(1, 8),
+(2, 9),
+(3, 11),
+(4, 10);
+
+insert into albumperformer (album_id, performer_id)
+values 
+(1, 8),
+(2, 9),
+(3, 11),
+(4, 10),
+(5, 8),
+(6, 9);
+
+insert into trackcollection (track_id, collection_id)
+values 
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 1),
+(6, 2);

@@ -8,7 +8,7 @@ performer_name VARCHAR(60) not null
 );
 create table if not exists Album (
 album_id SERIAL primary key,
-album_name VARCHAR(60) not null,
+album_name VARCHAR(60) unique not null,
 year_created numeric constraint creation_date check (year_created > 1950)
 );
 create table if not exists Collection (
@@ -19,9 +19,8 @@ year_created numeric constraint creation_date check (year_created > 1950)
 create table if not exists Track (
 track_id SERIAL primary key,
 track_name VARCHAR(60) not null,
-duration numeric constraint duration_time check (duration > 60),
-album_id SERIAL references Album(album_id),
-collection_id SERIAL references Collection(collection_id)
+duration integer constraint duration_time check (duration > 60),
+album_id integer references Album(album_id)
 );
 create table if not exists PerformerGenre (
 genre_id integer references MusicalGenre(genre_id),
@@ -38,4 +37,3 @@ track_id integer references Track(track_id),
 collection_id integer references Collection(collection_id),
 constraint pk3 primary key (track_id, collection_id)
 );
-
