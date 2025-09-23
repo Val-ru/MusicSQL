@@ -32,10 +32,10 @@ left join performergenre pg on m.genre_id = pg.genre_id
 group by genre_name;
 
 --Количество треков, вошедших в альбомы 2019–2020 годов.
-select album_name, count(track_id) track_q from album a
+select count(track_id) count_t from album a
 left join track t on a.album_id = t.album_id
-where year_created between 2019 and 2020
-group by album_name;
+where year_created between 2019 and 2020;
+
 
 --Средняя продолжительность треков по каждому альбому.
 select album_name, avg(duration) from album a
@@ -44,11 +44,14 @@ group by album_name;
 
 --Все исполнители, которые не выпустили альбомы в 2020 году.
 select performer_name from performer p
+where performer_name not in (
+select performer_name 
+from performer
 left join albumperformer ap on p.performer_id = ap.performer_id
 left join album a on ap.album_id = a.album_id
-where year_created != 2020
+where year_created = 2020);
 --where year_created not between 2020 and 2020
-group by performer_name;
+--group by performer_name;
 
 --Названия сборников, в которых присутствует конкретный исполнитель (выберите его сами).
 select name col_name from collection c
@@ -58,4 +61,4 @@ left join album a on t.album_id = a.album_id
 left join albumperformer ap on a.album_id = ap.album_id
 left join performer p on ap.performer_id = p.performer_id 
 where performer_name ilike 'Eminem'
-group by name
+group by name;

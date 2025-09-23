@@ -28,30 +28,30 @@ values
 ('Classic'),
 ('Hardcore');
 
-insert into track (track_name, duration)
+insert into track (track_name, duration, album_id)
 values 
-('Rap God', 300),
-('Ga', 200),
-('Kirk', 150),
-('Carry', 190),
-('My darling', 250),
-('Abracadabra', 290);
+('Rap God', 300, 1),
+('Ga', 200, 6),
+('Kirk', 150, 3),
+('Carry', 190, 4),
+('My darling', 250, 5),
+('Abracadabra', 290, 2);
 
 insert into performergenre (genre_id, performer_id)
 values
-(1, 8),
-(2, 9),
-(3, 11),
-(4, 10);
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);
 
 insert into albumperformer (album_id, performer_id)
 values 
-(1, 8),
-(2, 9),
-(3, 11),
-(4, 10),
-(5, 8),
-(6, 9);
+(1, 1),
+(2, 2),
+(3, 4),
+(4, 3),
+(5, 1),
+(6, 2);
 
 insert into trackcollection (track_id, collection_id)
 values 
